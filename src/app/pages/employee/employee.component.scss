@@ -1,0 +1,13 @@
+.employee-content {
+  padding: 3vw;
+  
+  .create {
+    padding: 0 6vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .read {
+    overflow-x: auto;
+  }
+}

@@ -1,0 +1,12 @@
+<div class="employee-content">
+  <div class="row create">
+    <div class="col-8">
+      <app-create-employee (onInfo)="handleInfo($event)"></app-create-employee>
+    </div>
+  </div>
+  <div class="row read">
+    <div class="col-12">
+      <app-list-employee [subject]="subject"></app-list-employee>
+    </div>
+  </div>
+</div>

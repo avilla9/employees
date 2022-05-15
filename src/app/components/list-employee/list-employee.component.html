@@ -1,0 +1,39 @@
+<table class="table table-hover" *ngIf="AllEmployee?.length">
+  <thead>
+    <tr class="table-dark">
+      <th class="selector">#</th>
+      <th>DNI</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Email</th>
+      <th>Edad</th>
+      <th>Departamento</th>
+      <th colspan="2">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="employees" *ngFor="let employee of AllEmployee.reverse(); let i = index;">
+      <td><strong>{{i+1}}</strong></td>
+      <td>{{employee.dni}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.lastName?.length > 0 ? employee.lastName : '------'}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.birthday?.length > 0 ? calculateAge(employee.birthday) : '------'}}</td>
+      <td>{{employee.department?.length > 0 ? employee.department : '------'}}</td>
+      <td><button (click)="open(content, employee)" class="btn btn-primary">Ver</button></td>
+      <td>
+        <button [disabled]="employee.department == 'Administración'" (click)="delete(i)" class="btn btn-warning">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Infrmación del empleado</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-create-employee [content]="employee"></app-create-employee>
+  </div>
+</ng-template>
